@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday My Wifey ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;text-align:center;color:white;font-family:Georgia,serif;background:radial-gradient(circle at top,#8d2467,#210e3d 55%,#08091d);overflow-x:hidden}
+main{max-width:650px;margin:auto;padding:22px 14px}
+h1{color:#ffc1e4;font-size:clamp(30px,8vw,46px);text-shadow:0 0 20px #ff299d}
+p{line-height:1.7}
+.card{margin:20px 0;padding:22px 14px;border:1px solid #ffffff40;border-radius:24px;background:#ffffff12;box-shadow:0 0 25px #ff3ca522}
+button{border:0;border-radius:28px;padding:13px 20px;margin:7px;background:linear-gradient(90deg,#ff408b,#a94dff);color:white;font-size:16px}
+.balloon{display:inline-block;font-size:43px;margin:8px;cursor:pointer;animation:float 1.5s infinite alternate}
+@keyframes float{to{transform:translateY(-12px)}}
+.pop{animation:pop .25s forwards;pointer-events:none}
+@keyframes pop{to{transform:scale(2);opacity:0}}
+#cake{font-size:100px;cursor:pointer;display:inline-block}
+#letter{display:none;font-size:19px;color:#ffd8ed}
+.heart{position:fixed;bottom:-30px;pointer-events:none;animation:rise 4s linear forwards}
+@keyframes rise{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<main>
+<div style="font-size:32px">💖 🌹 💖</div>
+<h1>Happy Birthday, My Wifey! 🎂</h1>
+<p>To my favourite person, my happiness and my forever love. ❤️</p>
+
+<section class="card">
+<h2>🎈 Pop Your Balloons!</h2>
+<p>Tap every balloon, my love! 💕</p>
+<div id="balloons"></div>
+<p id="count">Balloons popped: 0 / 8</p>
+</section>
+
+<section class="card">
+<h2>🎂 Your Birthday Cake</h2>
+<p>Tap the cake to cut it!</p>
+<div id="cake" onclick="cutCake()">🎂</div>
+<p id="cakeText">Make a wish, meri jaan! ✨</p>
+</section>
+
+<section class="card">
+<h2>🎁 A Surprise For You</h2>
+<button onclick="openGift()">Open Your Gift 💝</button>
+<div id="letter">
+<h2>💌 My Dearest Wifey</h2>
+Happy Birthday, meri jaan! 🥹❤️<br>
+Allah tumhari zindagi khushiyon se bhar de,
+tumhari har dua qabool ho aur tum hamesha
+muskurati raho. 🤲🏻💗<br><br>
+You are my today, my tomorrow and my always.
+I will keep choosing you, loving you and
+standing beside you. 💍♾️<br><br>
+<strong>I love you, my beautiful wife! 😘❤️</strong>
+</div>
+</section>
+<button onclick="rain()">Make It Rain Hearts 💕</button>
+<p>Made with ❤️ just for you, my wifey.</p>
+</main>
+<script>
+let n=0,cut=false,opened=false;
+const colors=["❤️","💗","💜","💙","💛","🩷","🧡","💚"];
+colors.forEach(c=>{
+let b=document.createElement("span");
+b.className="balloon";b.textContent="🎈";
+b.onclick=()=>{
+if(b.classList.contains("pop"))return;
+b.classList.add("pop");n++;
+document.getElementById("count").textContent="Balloons popped: "+n+" / 8";
+burst();
+if(n===8)document.getElementById("count").textContent="Yay! All balloons popped! 🎉";
+};
+document.getElementById("balloons").appendChild(b);
+});
+function burst(){for(let i=0;i<10;i++){
+let h=document.createElement("span");h.className="heart";
+h.textContent=["💖","💕","✨","🎉"][i%4];
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=20+Math.random()*20+"px";
+document.body.appendChild(h);setTimeout(()=>h.remove(),4000);
+}}
+function cutCake(){
+if(cut)return;cut=true;
+document.getElementById("cake").textContent="🍰";
+document.getElementById("cakeText").textContent="Cake cut! Make a beautiful wish, my love! 🎂❤️";
+burst();
+}
+function openGift(){
+if(opened)return;opened=true;
+document.getElementById("letter").style.display="block";
+burst();
+}
+function rain(){for(let i=0;i<8;i++)setTimeout(burst,i*200);}
+</script>
+</body>
+</html>
